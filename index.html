@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarHub - Premium Automotive Dealership</title>
+    <meta name="description" content="Explore CarHub's curated selection of premium new and pre-owned vehicles. Experience the future of driving with exceptional service and expertise.">
+    <meta name="keywords" content="car dealership, premium cars, luxury vehicles, new cars, used cars, car service, financing, CarHub">
+    <link rel="icon" href="https://placehold.co/32x32/333333/FFFFFF?text=CH" type="image/png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <!-- New animation libraries -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="antialiased">
+    <!-- Preloader -->
+    <div id="preloader" class="fixed inset-0 z-50 flex items-center justify-center bg-black">
+        <div class="preloader-spinner rounded-full border-4 border-t-4 border-gray-200 border-t-blue-600 h-12 w-12 animate-spin"></div>
+    </div>
+    <!-- Skip to content link -->
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 focus:z-50 focus:p-4 focus:bg-white focus:text-blue-600">
+        Skip to main content
+    </a>
+    <!-- Header with Glass Effect -->
+    <header id="header" class="fixed w-full z-50 sticky-header">
+        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <!-- Backdrop Blur and Glass Effect -->
+            <div class="absolute inset-0 bg-white/30 backdrop-blur-md backdrop-filter bg-opacity-10 border-b border-white/10"></div>
+            <div class="relative z-10 flex items-center space-x-2 text-2xl font-bold text-white hover:text-blue-200 transition duration-300">
+                <i class="fas fa-car-side text-blue-300 floating"></i> <span>CarHub</span>
+            </div>
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex items-center space-x-6 lg:space-x-8 relative z-10">
+                <a href="#hero" class="text-white hover:text-blue-200 transition duration-300 nav-link">Home</a>
+                <a href="#about" class="text-white hover:text-blue-200 transition duration-300 nav-link">About Us</a>
+                <a href="#models" class="text-white hover:text-blue-200 transition duration-300 nav-link">Models</a>
+                <a href="#services" class="text-white hover:text-blue-200 transition duration-300 nav-link">Services</a>
+                <a href="#news" class="text-white hover:text-blue-200 transition duration-300 nav-link">News</a>
+                <a href="#reviews" class="text-white hover:text-blue-200 transition duration-300 nav-link">Reviews</a>
+                <a href="#contact" class="text-white hover:text-blue-200 transition duration-300 nav-link">Contact Us</a>
+                <!-- Search Button -->
+                <div class="relative group">
+                    <button id="search-toggle" aria-label="Search" class="text-white hover:text-blue-200 transition duration-300">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <div id="search-container" class="absolute right-0 top-full mt-2 w-64 bg-white/80 backdrop-blur-sm shadow-lg rounded-md p-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-x-4 group-hover:translate-x-0">
+                        <input type="search" placeholder="Search vehicles..." class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
+                    </div>
+                </div>
+                <a href="#test-drive" class="bg-blue-600 text-white px-5 py-2 rounded-full font-medium hover:bg-blue-700 transition duration-300 shadow hover:shadow-md transform hover:-translate-y-1">
+                    Schedule Test Drive
+                </a>
+            </div>
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden relative z-50">
+                <button id="mobile-menu-button" aria-label="Open Menu" class="text-white focus:outline-none mr-4">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Mobile Menu Content -->
+    <div id="mobile-menu" class="md:hidden fixed top-0 left-0 h-full w-80 bg-white/95 backdrop-blur-sm shadow-lg transform -translate-x-full transition-transform duration-400 z-40">
+        <div class="flex flex-col space-y-1 p-4 pt-20">
+            <button id="close-menu" class="absolute top-4 right-4 text-gray-600 hover:text-gray-800 text-2xl">
+                <i class="fas fa-times"></i>
+            </button>
+            <a href="#hero" class="block px-4 py-3 text-gray-700 hover:bg-gray-100/50 rounded nav-link transition-all duration-300 transform hover:translate-x-2">Home</a>
+            <a href="#about" class="block px-4 py-3 text-gray-700 hover:bg-gray-100/50 rounded nav-link transition-all duration-300 transform hover:translate-x-2">About Us</a>
+            <a href="#models" class="block px-4 py-3 text-gray-700 hover:bg-gray-100/50 rounded nav-link transition-all duration-300 transform hover:translate-x-2">Models</a>
+            <a href="#services" class="block px-4 py-3 text-gray-700 hover:bg-gray-100/50 rounded nav-link transition-all duration-300 transform hover:translate-x-2">Services</a>
+            <a href="#news" class="block px-4 py-3 text-gray-700 hover:bg-gray-100/50 rounded nav-link transition-all duration-300 transform hover:translate-x-2">News</a>
+            <a href="#reviews" class="block px-4 py-3 text-gray-700 hover:bg-gray-100/50 rounded nav-link transition-all duration-300 transform hover:translate-x-2">Reviews</a>
+            <a href="#contact" class="block px-4 py-3 text-gray-700 hover:bg-gray-100/50 rounded nav-link transition-all duration-300 transform hover:translate-x-2">Contact Us</a>
+            <hr class="my-2 border-gray-200">
+            <div class="px-4 py-2">
+                <input type="search" placeholder="Search models..." class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
+            </div>
+            <a href="#test-drive" class="block text-center bg-blue-600 text-white px-5 py-3 rounded-md font-medium hover:bg-blue-700 transition duration-300 mt-2 transform hover:-translate-y-1">
+                Schedule Test Drive
+            </a>
+        </div>
+    </div>
+
+    <!-- Menu Backdrop -->
+    <div id="menu-backdrop" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden"></div>
+
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section id="hero" class="relative h-screen flex items-center justify-center text-white overflow-hidden">
+            <div class="absolute inset-0 z-0">
+                 <img src="bmw-m3-angel-eyes-black-background-5k-3840x2160-896.jpg"
+                      alt="Luxury car driving on a scenic road"
+                      class="w-full h-full object-cover"
+                      onerror="this.onerror=null; this.src='https://placehold.co/1920x1080/cccccc/ffffff?text=Hero+Image+Error';">
+            </div>
+            <div class="hero-overlay"></div>
+            <div class="relative z-10 text-center p-4">
+                <h1 id="hero-headline" class="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 opacity-0 translate-y-5">Experience the Future of Driving</h1>
+                <p id="hero-subheadline" class="text-lg md:text-xl lg:text-2xl mb-8 max-w-3xl mx-auto opacity-0 translate-y-5" style="transition-delay: 0.2s;">
+                    Explore our curated selection of premium vehicles, designed for performance, luxury, and innovation.
+                </p>
+                <a id="hero-cta" href="#models" class="inline-block px-8 py-4 bg-blue-600 text-white font-semibold rounded-full hover:bg-blue-700 transition duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 opacity-0 translate-y-5 pulse" style="transition-delay: 0.4s;">
+                    Explore Our Models
+                </a>
+            </div>
+            <!-- Scroll indicator -->
+            <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10">
+                <div class="animate-bounce w-6 h-10 border-2 border-white rounded-full flex justify-center">
+                    <div class="w-1 h-3 bg-white rounded-full mt-2"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="bg-white">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12" data-aos="fade-down">About <span class="text-blue-600">CarHub</span></h2>
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div data-aos="fade-right" data-aos-delay="100">
+                        <h3 class="text-2xl font-semibold mb-4">Our Story: Driving Excellence</h3>
+                        <p class="text-gray-700 mb-4 leading-relaxed">
+                            Founded in 2025, <strong>CarHub</strong> was born from a passion for exceptional automobiles and a commitment to unparalleled customer service. We believe buying a car should be an exciting and seamless experience.
+                        </p>
+                        <p class="text-gray-700 mb-6 leading-relaxed">
+                            Our vision is to be the leading destination for premium automotive solutions, known for our integrity, innovation, and the quality of the vehicles we offer.
+                        </p>
+                        <a href="#" class="text-blue-600 font-medium hover:underline inline-flex items-center group">
+                            Learn More About Our Values 
+                            <i class="fas fa-arrow-right ml-1 text-sm group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                    <div data-aos="fade-left" data-aos-delay="200">
+                        <img src="https://images.unsplash.com/photo-1517994112540-009c47ea476b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80"
+                             alt="Modern Car Dealership Interior"
+                             class="rounded-lg shadow-xl w-full h-auto object-cover transform hover:scale-105 transition duration-700"
+                             onerror="this.onerror=null; this.src='https://placehold.co/600x400/cccccc/ffffff?text=Dealership+Image';">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Models Section -->
+        <section id="models" class="bg-gray-50">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-4" data-aos="fade-down">Explore Our <span class="text-blue-600">Inventory</span></h2>
+                <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto" data-aos="fade-down" data-aos-delay="100">Discover a wide range of premium vehicles. Use the filters to find the perfect match for your lifestyle.</p>
+                <!-- Filters -->
+                <div class="mb-10 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4" data-aos="fade-up" data-aos-delay="200">
+                    <div>
+                        <label for="filter-make" class="form-label">Make</label>
+                        <select id="filter-make" class="form-input">
+                            <option value="">All Makes</option>
+                            <optgroup label="Indian Brands">
+                                <option value="tata-motors">Tata Motors</option>
+                                <option value="mahindra">Mahindra</option>
+                                <option value="maruti-suzuki">Maruti Suzuki</option>
+                                <option value="force-motors">Force Motors</option>
+                                <option value="ashok-leyland">Ashok Leyland</option>
+                            </optgroup>
+                            <optgroup label="Japanese Brands">
+                                <option value="toyota">Toyota</option>
+                                <option value="honda">Honda</option>
+                                <option value="nissan">Nissan</option>
+                                <option value="suzuki">Suzuki</option>
+                            </optgroup>
+                            <optgroup label="European Brands">
+                                <option value="volkswagen">Volkswagen</option>
+                                <option value="skoda">Skoda</option>
+                                <option value="audi">Audi</option>
+                                <option value="bmw">BMW</option>
+                                <option value="mercedes-benz">Mercedes-Benz</option>
+                                <option value="porsche">Porsche</option>
+                                <option value="renault">Renault</option>
+                                <option value="citroen">Citroën</option>
+                                <option value="volvo">Volvo</option>
+                            </optgroup>
+                            <optgroup label="American Brands">
+                                <option value="ford">Ford</option>
+                                <option value="jeep">Jeep</option>
+                            </optgroup>
+                            <optgroup label="Luxury Brands">
+                                <option value="jaguar">Jaguar</option>
+                                <option value="land-rover">Land Rover</option>
+                                <option value="mini">Mini</option>
+                                <option value="maserati">Maserati</option>
+                                <option value="ferrari">Ferrari</option>
+                                <option value="lamborghini">Lamborghini</option>
+                            </optgroup>
+                            <optgroup label="Other Brands">
+                                <option value="mg">MG</option>
+                                <option value="fiat">Fiat</option>
+                                <option value="byd">BYD</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="filter-type" class="form-label">Type</label>
+                        <select id="filter-type" class="form-input">
+                            <option value="">All Types</option>
+                            <option value="sedan">Sedan</option>
+                            <option value="suv">SUV</option>
+                            <option value="coupe">Coupe</option>
+                            <option value="truck">Truck</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="filter-condition" class="form-label">Condition</label>
+                        <select id="filter-condition" class="form-input">
+                            <option value="">All</option>
+                            <option value="new">New</option>
+                            <option value="used">Pre-Owned</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="filter-price" class="form-label">Price Range</label>
+                        <select id="filter-price" class="form-input">
+                            <option value="">Any Price</option>
+                            <option value="<50k">< $50,000</option>
+                            <option value="50k-100k">$50,000 - $100,000</option>
+                            <option value=">100k">> $100,000</option>
+                        </select>
+                    </div>
+                    <div class="col-span-2 md:col-span-1 flex items-end">
+                         <button class="w-full bg-blue-600 text-white px-4 py-2 rounded-md font-medium hover:bg-blue-700 transition duration-300 transform hover:-translate-y-1">
+                            Apply Filters
+                         </button>
+                    </div>
+                </div>
+                <!-- Featured Vehicles Slider -->
+                <div class="mb-16" data-aos="fade-up">
+                    <h3 class="text-2xl font-semibold mb-6 text-center">Featured Vehicles</h3>
+                    <div class="swiper featured-swiper">
+                        <div class="swiper-wrapper">
+                            <!-- Featured Car 1 -->
+                            <div class="swiper-slide bg-white rounded-lg shadow-lg overflow-hidden car-card">
+                                <img src="luxury sedans.jpg" alt="Featured Car 1" class="w-full h-56 object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x400/cccccc/ffffff?text=Car+Image+1';">
+                                <div class="p-6">
+                                    <h4 class="text-xl font-semibold mb-2">Luxury Sedan X</h4>
+                                    <p class="text-gray-600 text-sm mb-3">Experience unparalleled comfort and cutting-edge tech.</p>
+                                    <p class="text-lg font-bold text-blue-600 mb-4">Starting at $75,000</p>
+                                    <a href="#" class="text-blue-600 font-medium hover:underline text-sm inline-flex items-center group">
+                                        View Details <i class="fas fa-arrow-right ml-1 text-sm group-hover:translate-x-1 transition-transform"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- Featured Car 2 -->
+                            <div class="swiper-slide bg-white rounded-lg shadow-lg overflow-hidden car-card">
+                                <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Featured Car 2" class="w-full h-56 object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x400/cccccc/ffffff?text=Car+Image+2';">
+                                <div class="p-6">
+                                    <h4 class="text-xl font-semibold mb-2">Performance SUV Z</h4>
+                                    <p class="text-gray-600 text-sm mb-3">Power meets versatility. Ready for any adventure.</p>
+                                    <p class="text-lg font-bold text-blue-600 mb-4">Starting at $82,000</p>
+                                    <a href="#" class="text-blue-600 font-medium hover:underline text-sm inline-flex items-center group">
+                                        View Details <i class="fas fa-arrow-right ml-1 text-sm group-hover:translate-x-1 transition-transform"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- Featured Car 3 -->
+                            <div class="swiper-slide bg-white rounded-lg shadow-lg overflow-hidden car-card">
+                                <img src="coupe suv.webp" alt="Featured Car 3" class="w-full h-56 object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x400/cccccc/ffffff?text=Car+Image+3';">
+                                <div class="p-6">
+                                    <h4 class="text-xl font-semibold mb-2">Electric Coupe E</h4>
+                                    <p class="text-gray-600 text-sm mb-3">Silent power, sustainable luxury. Drive the future.</p>
+                                    <p class="text-lg font-bold text-blue-600 mb-4">Starting at $95,000</p>
+                                    <a href="#" class="text-blue-600 font-medium hover:underline text-sm inline-flex items-center group">
+                                        View Details <i class="fas fa-arrow-right ml-1 text-sm group-hover:translate-x-1 transition-transform"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-pagination mt-8"></div>
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+                    </div>
+                </div>
+                <!-- Vehicle Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Vehicle Card 1 -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden car-card" data-aos="fade-up" data-aos-delay="0">
+                        <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Car Model 1" class="w-full h-56 object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x400/cccccc/ffffff?text=Car+Image+4';">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">Sportscar GT</h3>
+                            <p class="text-gray-600 text-sm mb-3">Unleash pure performance on the open road.</p>
+                            <p class="text-lg font-bold text-blue-600 mb-4">$120,000</p>
+                            <a href="#" class="text-blue-600 font-medium hover:underline text-sm inline-flex items-center group">
+                                View Details <i class="fas fa-arrow-right ml-1 text-sm group-hover:translate-x-1 transition-transform"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Vehicle Card 2 -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden car-card" data-aos="fade-up" data-aos-delay="100">
+                         <img src="https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1930&q=80" alt="Car Model 2" class="w-full h-56 object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x400/cccccc/ffffff?text=Car+Image+5';">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">Family SUV Pro</h3>
+                            <p class="text-gray-600 text-sm mb-3">Spacious, safe, and packed with features for everyone.</p>
+                            <p class="text-lg font-bold text-blue-600 mb-4">$65,000</p>
+                            <a href="#" class="text-blue-600 font-medium hover:underline text-sm inline-flex items-center group">
+                                View Details <i class="fas fa-arrow-right ml-1 text-sm group-hover:translate-x-1 transition-transform"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Vehicle Card 3 -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden car-card" data-aos="fade-up" data-aos-delay="200">
+                        <img src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Car Model 3" class="w-full h-56 object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x400/cccccc/ffffff?text=Car+Image+6';">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">Convertible Speedster</h3>
+                            <p class="text-gray-600 text-sm mb-3">Feel the wind, embrace the freedom. Pure driving pleasure.</p>
+                            <p class="text-lg font-bold text-blue-600 mb-4">$88,000</p>
+                            <a href="#" class="text-blue-600 font-medium hover:underline text-sm inline-flex items-center group">
+                                View Details <i class="fas fa-arrow-right ml-1 text-sm group-hover:translate-x-1 transition-transform"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Vehicle Card 4 -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden car-card" data-aos="fade-up" data-aos-delay="0">
+                        <img src="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1964&q=80" alt="Car Model 4" class="w-full h-56 object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x400/cccccc/ffffff?text=Car+Image+7';">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">Compact EV City</h3>
+                            <p class="text-gray-600 text-sm mb-3">Efficient, agile, and perfect for urban adventures.</p>
+                            <p class="text-lg font-bold text-blue-600 mb-4">$45,000</p>
+                            <a href="#" class="text-blue-600 font-medium hover:underline text-sm inline-flex items-center group">
+                                View Details <i class="fas fa-arrow-right ml-1 text-sm group-hover:translate-x-1 transition-transform"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Vehicle Card 5 -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden car-card" data-aos="fade-up" data-aos-delay="100">
+                        <img src="off road truck.webp" alt="Car Model 5" class="w-full h-56 object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x400/cccccc/ffffff?text=Car+Image+8';">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">Off-Road Truck XL</h3>
+                            <p class="text-gray-600 text-sm mb-3">Rugged capability meets premium comfort. Conquer any terrain.</p>
+                            <p class="text-lg font-bold text-blue-600 mb-4">$72,000</p>
+                            <a href="#" class="text-blue-600 font-medium hover:underline text-sm inline-flex items-center group">
+                                View Details <i class="fas fa-arrow-right ml-1 text-sm group-hover:translate-x-1 transition-transform"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Vehicle Card 6 -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden car-card" data-aos="fade-up" data-aos-delay="200">
+                        <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Car Model 6" class="w-full h-56 object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x400/cccccc/ffffff?text=Car+Image+9';">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">Executive Sedan Lux</h3>
+                            <p class="text-gray-600 text-sm mb-3">Sophistication and technology for the discerning driver.</p>
+                            <p class="text-lg font-bold text-blue-600 mb-4">$85,000</p>
+                            <a href="#" class="text-blue-600 font-medium hover:underline text-sm inline-flex items-center group">
+                                View Details <i class="fas fa-arrow-right ml-1 text-sm group-hover:translate-x-1 transition-transform"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Pagination -->
+                <div class="mt-12 text-center" data-aos="fade-up">
+                    <nav aria-label="Page navigation">
+                        <ul class="inline-flex items-center -space-x-px">
+                            <li>
+                                <a href="#" class="px-3 py-2 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 transition duration-300">Previous</a>
+                            </li>
+                            <li>
+                                <a href="#" aria-current="page" class="z-10 px-3 py-2 leading-tight text-blue-600 border border-blue-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 transition duration-300">1</a>
+                            </li>
+                            <li>
+                                <a href="#" class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 transition duration-300">2</a>
+                            </li>
+                            <li>
+                                <a href="#" class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 transition duration-300">Next</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="bg-white">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12" data-aos="fade-down">Comprehensive <span class="text-blue-600">Services</span></h2>
+                <div class="grid md:grid-cols-3 gap-10">
+                    <!-- Service 1 -->
+                    <div class="text-center p-8 border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300" data-aos="fade-up" data-aos-delay="0">
+                        <div class="mb-4 text-blue-600">
+                            <i class="fas fa-hand-holding-usd fa-3x floating"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">Flexible Financing</h3>
+                        <p class="text-gray-600 mb-5">Explore competitive loan and lease options tailored to your budget. Get pre-approved quickly and easily.</p>
+                        <a href="#" class="font-medium text-blue-600 hover:underline inline-flex items-center group">
+                            Apply for Financing <i class="fas fa-arrow-right ml-1 text-sm group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                    <!-- Service 2 -->
+                    <div class="text-center p-8 border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300" data-aos="fade-up" data-aos-delay="100">
+                        <div class="mb-4 text-blue-600">
+                            <i class="fas fa-tools fa-3x floating" style="animation-delay: 2s;"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">Expert Service Center</h3>
+                        <p class="text-gray-600 mb-5">Trust our certified technicians with routine maintenance and complex repairs. We use genuine parts for optimal performance.</p>
+                        <a href="#" class="font-medium text-blue-600 hover:underline inline-flex items-center group">
+                            Schedule Service <i class="fas fa-arrow-right ml-1 text-sm group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                    <!-- Service 3 -->
+                    <div class="text-center p-8 border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300" data-aos="fade-up" data-aos-delay="200">
+                        <div class="mb-4 text-blue-600">
+                            <i class="fas fa-cogs fa-3x floating" style="animation-delay: 4s;"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">Genuine Parts & Accessories</h3>
+                        <p class="text-gray-600 mb-5">Enhance your vehicle with official accessories or find the exact OEM part you need for repairs.</p>
+                        <a href="#" class="font-medium text-blue-600 hover:underline inline-flex items-center group">
+                            Order Parts <i class="fas fa-arrow-right ml-1 text-sm group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- News Section -->
+        <section id="news" class="bg-gray-50">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12" data-aos="fade-down">Latest <span class="text-blue-600">News & Insights</span></h2>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- News 1 -->
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden car-card" data-aos="fade-up" data-aos-delay="0">
+                        <img src="vision-2025_advertisment_main749_2_blog.jpg" alt="Blog post image 1" class="w-full h-48 object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x400/cccccc/ffffff?text=News+Image+1';">
+                        <div class="p-6">
+                            <p class="text-sm text-gray-500 mb-1">April 10, 2025 | Technology</p>
+                            <h3 class="text-lg font-semibold mb-3 hover:text-blue-600 transition duration-300"><a href="#">The Future of In-Car Infotainment Systems</a></h3>
+                            <p class="text-gray-600 text-sm mb-4">Explore the latest advancements in connectivity, entertainment, and driver assistance features...</p>
+                            <a href="#" class="text-blue-600 font-medium hover:underline text-sm inline-flex items-center group">
+                                Read More <i class="fas fa-arrow-right ml-1 text-sm group-hover:translate-x-1 transition-transform"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- News 2 -->
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden car-card" data-aos="fade-up" data-aos-delay="100">
+                        <img src="ManCleaningVehicleEngine.jpg" alt="Blog post image 2" class="w-full h-48 object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x400/cccccc/ffffff?text=News+Image+2';">
+                        <div class="p-6">
+                            <p class="text-sm text-gray-500 mb-1">April 5, 2025 | Maintenance</p>
+                            <h3 class="text-lg font-semibold mb-3 hover:text-blue-600 transition duration-300"><a href="#">Top 5 Maintenance Tips for Luxury Vehicles</a></h3>
+                            <p class="text-gray-600 text-sm mb-4">Keep your premium car running smoothly with these essential maintenance practices...</p>
+                            <a href="#" class="text-blue-600 font-medium hover:underline text-sm inline-flex items-center group">
+                                Read More <i class="fas fa-arrow-right ml-1 text-sm group-hover:translate-x-1 transition-transform"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- News 3 -->
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden car-card" data-aos="fade-up" data-aos-delay="200">
+                        <img src="https://images.unsplash.com/photo-1611312449412-6cefac5dc3e4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Blog post image 3" class="w-full h-48 object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x400/cccccc/ffffff?text=News+Image+3';">
+                        <div class="p-6">
+                             <p class="text-sm text-gray-500 mb-1">March 28, 2025 | Industry News</p>
+                            <h3 class="text-lg font-semibold mb-3 hover:text-blue-600 transition duration-300"><a href="#">Electric Vehicle Adoption Trends in 2025</a></h3>
+                            <p class="text-gray-600 text-sm mb-4">A look at the growing popularity of EVs and what it means for the automotive landscape...</p>
+                            <a href="#" class="text-blue-600 font-medium hover:underline text-sm inline-flex items-center group">
+                                Read More <i class="fas fa-arrow-right ml-1 text-sm group-hover:translate-x-1 transition-transform"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-10" data-aos="fade-up">
+                    <a href="#" class="inline-block px-6 py-3 border border-blue-600 text-blue-600 font-semibold rounded-md hover:bg-blue-600 hover:text-white transition duration-300 transform hover:-translate-y-1">
+                        View All News
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reviews Section -->
+        <section id="reviews" class="bg-gray-50">
+            <div class="container mx-auto px-4 py-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12" data-aos="fade-down">Customer <span class="text-blue-600">Reviews</span></h2>
+                <div class="swiper reviews-swiper">
+                    <div class="swiper-wrapper">
+                        <!-- Review 1 -->
+                        <div class="swiper-slide bg-white rounded-lg shadow-lg p-8" data-aos="zoom-in" data-aos-delay="0">
+                            <div class="flex items-center mb-4">
+                                <div class="flex-shrink-0 mr-4">
+                                    <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Sarah Johnson" class="w-12 h-12 rounded-full object-cover">
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-semibold">Sarah Johnson</h4>
+                                    <div class="flex text-yellow-400 mt-1">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-gray-600">"The team at CarHub made my car buying experience exceptional. They were knowledgeable, patient, and helped me find the perfect luxury SUV for my family. The financing options were competitive too!"</p>
+                        </div>
+                        <!-- Review 2 -->
+                        <div class="swiper-slide bg-white rounded-lg shadow-lg p-8" data-aos="zoom-in" data-aos-delay="100">
+                            <div class="flex items-center mb-4">
+                                <div class="flex-shrink-0 mr-4">
+                                    <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Michael Chen" class="w-12 h-12 rounded-full object-cover">
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-semibold">Michael Chen</h4>
+                                    <div class="flex text-yellow-400 mt-1">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-gray-600">"I've been servicing my car at CarHub for years. Their technicians are top-notch and always explain everything clearly. The waiting area is comfortable with great amenities while I wait."</p>
+                        </div>
+                        <!-- Review 3 -->
+                        <div class="swiper-slide bg-white rounded-lg shadow-lg p-8" data-aos="zoom-in" data-aos-delay="200">
+                            <div class="flex items-center mb-4">
+                                <div class="flex-shrink-0 mr-4">
+                                    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Priya Patel" class="w-12 h-12 rounded-full object-cover">
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-semibold">Priya Patel</h4>
+                                    <div class="flex text-yellow-400 mt-1">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-gray-600">"Exceptional service from start to finish! The sales team understood exactly what I was looking for and found me a beautiful pre-owned luxury sedan that was in perfect condition."</p>
+                        </div>
+                        <!-- Review 4 -->
+                        <div class="swiper-slide bg-white rounded-lg shadow-lg p-8" data-aos="zoom-in" data-aos-delay="300">
+                            <div class="flex items-center mb-4">
+                                <div class="flex-shrink-0 mr-4">
+                                    <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="David Wilson" class="w-12 h-12 rounded-full object-cover">
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-semibold">David Wilson</h4>
+                                    <div class="flex text-yellow-400 mt-1">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-gray-600">"The selection of electric vehicles at CarHub is impressive. I test drove several models and the staff was very knowledgeable about the differences. Ended up leasing a fantastic EV!"</p>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination mt-8"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
+                <div class="text-center mt-12" data-aos="fade-up">
+                    <a href="#" class="inline-block px-6 py-3 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition duration-300 transform hover:-translate-y-1">
+                        Leave a Review
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Test Drive Section -->
+        <section id="test-drive" class="bg-white">
+            <div class="container mx-auto px-4 py-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12" data-aos="fade-down">Schedule a <span class="text-blue-600">Test Drive</span></h2>
+                <div class="max-w-2xl mx-auto">
+                    <form id="test-drive-form" class="space-y-6" data-aos="fade-up">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="td-name" class="form-label">Full Name</label>
+                                <input type="text" id="td-name" name="name" required class="form-input">
+                            </div>
+                            <div>
+                                <label for="td-email" class="form-label">Email Address</label>
+                                <input type="email" id="td-email" name="email" required class="form-input">
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="td-phone" class="form-label">Phone Number</label>
+                                <input type="tel" id="td-phone" name="phone" required class="form-input">
+                            </div>
+                            <div>
+                                <label for="td-date" class="form-label">Preferred Date</label>
+                                <input type="date" id="td-date" name="date" required class="form-input">
+                            </div>
+                        </div>
+                        <div>
+                            <label for="td-model" class="form-label">Vehicle Model</label>
+                            <select id="td-model" name="model" class="form-input">
+                                <option value="">Select a model</option>
+                                <option value="Luxury Sedan X">Luxury Sedan X</option>
+                                <option value="Performance SUV Z">Performance SUV Z</option>
+                                <option value="Electric Coupe E">Electric Coupe E</option>
+                                <option value="Sportscar GT">Sportscar GT</option>
+                                <option value="Family SUV Pro">Family SUV Pro</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="td-location" class="form-label">Preferred Location</label>
+                            <select id="td-location" name="location" class="form-input">
+                                <option value="">Select a location</option>
+                                <option value="Main Dealership">Main Dealership</option>
+                                <option value="Home Delivery">Home Delivery</option>
+                                <option value="Workplace">Workplace</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="td-notes" class="form-label">Special Requests</label>
+                            <textarea id="td-notes" name="notes" rows="3" class="form-textarea"></textarea>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="submit-button">
+                                Schedule Test Drive
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="bg-white">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12" data-aos="fade-down">Get In <span class="text-blue-600">Touch</span></h2>
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div data-aos="fade-right" data-aos-delay="100">
+                        <h3 class="text-2xl font-semibold mb-6">Send Us a Message</h3>
+                        <form id="contact-form" action="#" method="POST">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+                                <div>
+                                    <label for="name" class="form-label">Full Name</label>
+                                    <input type="text" id="name" name="name" required class="form-input">
+                                </div>
+                                <div>
+                                    <label for="email" class="form-label">Email Address</label>
+                                    <input type="email" id="email" name="email" required class="form-input">
+                                </div>
+                            </div>
+                            <div class="mb-6">
+                                <label for="subject" class="form-label">Subject (Optional)</label>
+                                <input type="text" id="subject" name="subject" class="form-input">
+                            </div>
+                            <div class="mb-6">
+                                <label for="message" class="form-label">Message</label>
+                                <textarea id="message" name="message" rows="5" required class="form-textarea"></textarea>
+                            </div>
+                            <div>
+                                <button type="submit" class="submit-button">
+                                    Send Message
+                                </button>
+                            </div>
+                            <p id="form-status" class="mt-4 text-sm"></p>
+                        </form>
+                    </div>
+                    <div data-aos="fade-left" data-aos-delay="200">
+                        <h3 class="text-2xl font-semibold mb-6">Contact Information</h3>
+                        <div class="space-y-4 text-gray-700">
+                            <p><i class="fas fa-map-marker-alt fa-fw mr-2 text-blue-600"></i>123 Auto Avenue, Guwahati, Assam, 781001, India</p>
+                            <p><i class="fas fa-phone fa-fw mr-2 text-blue-600"></i><a href="tel:+910000000000" class="hover:text-blue-600">+91 (000) 000-0000</a> (Sales)</p>
+                            <p><i class="fas fa-wrench fa-fw mr-2 text-blue-600"></i><a href="tel:+911111111111" class="hover:text-blue-600">+91 (111) 111-1111</a> (Service)</p>
+                            <p><i class="fas fa-envelope fa-fw mr-2 text-blue-600"></i><a href="mailto:info@carhub.example.com" class="hover:text-blue-600">info@carhub.example.com</a></p>
+                            <p><i class="fas fa-clock fa-fw mr-2 text-blue-600"></i>Mon - Sat: 9:00 AM - 7:00 PM | Sun: Closed</p>
+                        </div>
+                        <div class="mt-8 rounded-lg overflow-hidden shadow-md" data-aos="zoom-in" data-aos-delay="300">
+                            <div class="bg-gray-200 h-64 flex items-center justify-center text-gray-500">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d114588.57092987966!2d91.68666881138156!3d26.17310422642807!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x375a5a287f9133ff%3A0x2bbd1332436bde32!2sGuwahati%2C%20Assam!5e0!3m2!1sen!2sin!4v1713147160000!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            </div>
+                        </div>
+                        <div class="mt-8">
+                            <h4 class="text-lg font-semibold mb-3">Connect With Us</h4>
+                            <div class="flex space-x-4">
+                                <a href="#" aria-label="Facebook" class="text-gray-600 hover:text-blue-700 transition duration-300 text-2xl transform hover:-translate-y-1"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#" aria-label="Instagram" class="text-gray-600 hover:text-pink-500 transition duration-300 text-2xl transform hover:-translate-y-1"><i class="fab fa-instagram"></i></a>
+                                <a href="#" aria-label="x" class="text-gray-600 hover:text-black-400 transition duration-300 text-2xl transform hover:-translate-y-1"><i class="fab fa-x"></i></a>
+                                <a href="#" aria-label="whatsapp" class="text-gray-600 hover:text-green-600 transition duration-300 text-2xl transform hover:-translate-y-1"><i class="fab fa-whatsapp"></i></a>
+                                <a href="#" aria-label="YouTube" class="text-gray-600 hover:text-red-600 transition duration-300 text-2xl transform hover:-translate-y-1"><i class="fab fa-youtube"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-300 py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <a href="#hero" class="flex items-center space-x-2 text-xl font-bold text-white mb-4">
+                        <i class="fas fa-car-side text-blue-500"></i>
+                        <span>CarHub</span>
+                    </a>
+                    <p class="text-sm text-gray-400">Your premier destination for luxury and performance vehicles. Experience the difference.</p>
+                    <div class="flex space-x-3 mt-4">
+                        <a href="#" aria-label="Facebook" class="text-gray-400 hover:text-white transition duration-300 transform hover:-translate-y-1"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram" class="text-gray-400 hover:text-white transition duration-300 transform hover:-translate-y-1"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="whatsapp" class="text-gray-400 hover:text-white transition duration-300 transform hover:-translate-y-1"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" aria-label="x" class="text-gray-400 hover:text-white transition duration-300 transform hover:-translate-y-1"><i class="fab fa-x"></i></a>
+                        <a href="#" aria-label="YouTube" class="text-gray-400 hover:text-white transition duration-300 transform hover:-translate-y-1"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h5 class="text-lg font-semibold text-white mb-4">Quick Links</h5>
+                    <ul class="space-y-2">
+                        <li><a href="#hero" class="text-gray-400 hover:text-white transition duration-300 text-sm">Home</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition duration-300 text-sm">About Us</a></li>
+                        <li><a href="#models" class="text-gray-400 hover:text-white transition duration-300 text-sm">Models</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition duration-300 text-sm">Services</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition duration-300 text-sm">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-lg font-semibold text-white mb-4">Resources</h5>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300 text-sm">Financing Application</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300 text-sm">Schedule Service</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300 text-sm">Blog/News</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300 text-sm">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300 text-sm">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-lg font-semibold text-white mb-4">Contact Us</h5>
+                    <address class="not-italic text-sm space-y-2 text-gray-400">
+                        <p><i class="fas fa-map-marker-alt fa-fw mr-2"></i>123 Auto Avenue, Guwahati, Assam, India</p>
+                        <p><i class="fas fa-phone fa-fw mr-2"></i><a href="tel:+910000000000" class="hover:text-white">+91 123456789</a></p>
+                        <p><i class="fas fa-envelope fa-fw mr-2"></i><a href="mailto:info@carhub.example.com" class="hover:text-white">info@carhub.example.com</a></p>
+                    </address>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 pt-8 text-center text-sm text-gray-500">
+                &copy; 2025 CarHub. All rights reserved. Website designed with <i class="fas fa-heart text-red-500"></i>.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
